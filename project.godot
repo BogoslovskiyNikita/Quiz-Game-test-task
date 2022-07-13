@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="Quiz Game (test task)"
+run/main_scene="res://scenes/menu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+db="*res://scripts/global/db.gd"
+
+[display]
+
+window/size/width=640
+window/size/height=640
+window/size/resizable=false
+window/dpi/allow_hidpi=true
+
+[global]
+
+window=false
+size=false
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

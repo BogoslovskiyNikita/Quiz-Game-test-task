@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/quiz.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/FrzzSans.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/themes/quiz.tres" type="Theme" id=3]
+[ext_resource path="res://assets/textures/heart (1).png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="Quiz" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 55.0 ],
+"_edit_vertical_guides_": [ 291.0, 350.0 ]
+}
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -86.0
+margin_top = 30.0
+margin_right = -17.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 1 )
+text = "Очки: "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -250.0
+margin_right = 180.0
+margin_bottom = 250.0
+
+[node name="CenterContainer5" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 100.0
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+
+[node name="QuestionLabel" type="RichTextLabel" parent="VBoxContainer/CenterContainer5"]
+margin_right = 360.0
+margin_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 360, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Question[/center]"
+text = "Question"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 104.0
+margin_right = 360.0
+margin_bottom = 200.0
+size_flags_vertical = 3
+
+[node name="FrstAnswerBtn" type="Button" parent="VBoxContainer/CenterContainer"]
+margin_top = 32.0
+margin_right = 360.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 360, 20 )
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 204.0
+margin_right = 360.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+
+[node name="ScndAnswerBtn" type="Button" parent="VBoxContainer/CenterContainer2"]
+margin_top = 32.0
+margin_right = 360.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 360, 20 )
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+
+[node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 360.0
+margin_bottom = 400.0
+size_flags_vertical = 3
+
+[node name="ThrdAnswerBtn" type="Button" parent="VBoxContainer/CenterContainer3"]
+margin_top = 32.0
+margin_right = 360.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 360, 20 )
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+
+[node name="CenterContainer4" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 404.0
+margin_right = 360.0
+margin_bottom = 500.0
+size_flags_vertical = 3
+
+[node name="FrthAnserBtn" type="Button" parent="VBoxContainer/CenterContainer4"]
+margin_top = 32.0
+margin_right = 360.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 360, 20 )
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+
+[node name="Life" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 23.0
+margin_right = 131.0
+margin_bottom = 60.0
+
+[node name="Heart1" type="TextureRect" parent="Life"]
+margin_right = 32.0
+margin_bottom = 37.0
+texture = ExtResource( 4 )
+
+[node name="Heart2" type="TextureRect" parent="Life"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 37.0
+texture = ExtResource( 4 )
+
+[node name="Heart3" type="TextureRect" parent="Life"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 37.0
+texture = ExtResource( 4 )
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.5
+margin_top = -65.5
+margin_right = 199.5
+margin_bottom = 65.5
+popup_exclusive = true
+window_title = "Победа!"
+
+[connection signal="pressed" from="VBoxContainer/CenterContainer/FrstAnswerBtn" to="." method="_on_FrstAnswerBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/ScndAnswerBtn" to="." method="_on_ScndAnswerBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer3/ThrdAnswerBtn" to="." method="_on_ThrdAnswerBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer4/FrthAnserBtn" to="." method="_on_FrthAnserBtn_pressed"]
+[connection signal="about_to_show" from="AcceptDialog" to="." method="_on_AcceptDialog_about_to_show"]
+[connection signal="confirmed" from="AcceptDialog" to="." method="_on_AcceptDialog_confirmed"]
