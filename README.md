@@ -1,2 +1,0 @@
-# QuizGame(test_task)
- 
